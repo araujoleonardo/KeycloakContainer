@@ -1,11 +1,11 @@
 # Docker Compose Setup for Keycloak and PostgreSQL
 
-This Docker Compose file sets up Keycloak and PostgreSQL, providing an authentication system with data storage. It specifies service configurations, including environment variables for access and a custom network for inter-service communication. Ideal for development, this setup lays the groundwork for application authentication management.
+Este repositório Docker Compose configura o Keycloak e o PostgreSQL, fornecendo um sistema de autenticação com armazenamento de dados. Ele especifica as configurações de serviço, incluindo variáveis de ambiente para acesso e uma rede personalizada para comunicação entre serviços. Ideal para desenvolvimento, essa configuração estabelece as bases para o gerenciamento de autenticação de aplicativos.
 
 ## Services
 
 ### PostgreSQL Service (`postgres`):
-- **Image:** Uses the Docker image `postgres:16.2` to run a PostgreSQL server.
+- **Image:** Uses the Docker image `postgres:16-bullseye` to run a PostgreSQL server.
 - **Volumes:** Maps a volume named `postgres_data` to `/var/lib/postgresql/data` inside the container for storage of the database data.
 - **Environment Variables:** Configures the database with the name (`POSTGRES_DB`), user (`POSTGRES_USER`), and password (`POSTGRES_PASSWORD`) specified by the environment variables.
 - **Networks:** Connects to a custom network `keycloak_network` for communication with the Keycloak service.
@@ -21,11 +21,11 @@ This Docker Compose file sets up Keycloak and PostgreSQL, providing an authentic
 
 ## Volumes
 
-- **postgres_data:** A named volume for storing PostgreSQL data across container restarts, using the default local storage driver.
+- **postgres_data:** Um volume nomeado para armazenar os dados do PostgreSQL durante as reinicializações do contentor, utilizando o controlador de armazenamento local predefinido.
 
 ## Networks
 
-- **keycloak_network:** A custom network using the bridge driver, facilitating communication between the Keycloak and PostgreSQL containers.
+- **keycloak_network:** Uma rede personalizada usando o driver bridge, facilitando a comunicação entre os contentores Keycloak e PostgreSQL.
 
 ## Environment Variables
 
